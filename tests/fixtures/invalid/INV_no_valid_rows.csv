@@ -1,0 +1,2 @@
+datetime,date,category,type,asset_class,name,symbol,shares,price,amount,fee,tax,currency,fx_rate,transaction_id,mcc_code
+2025-04-02T09:00:00Z,2025-04-02,CASH,SYNTHETIC_UNKNOWN,,,,,,-100,,,EUR,,syn-bad-12,

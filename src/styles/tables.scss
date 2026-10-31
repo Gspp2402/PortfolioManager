@@ -1,0 +1,541 @@
+// =============================================================================
+// Tables
+// =============================================================================
+
+.allocation-table-panel {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.table-header {
+  padding: 20px 25px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table-header h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.allocation-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  table-layout: fixed;
+
+  thead {
+    background: var(--bg-body);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+}
+
+// Column width definitions
+.allocation-table th:nth-child(1) { width: 55%; }
+.allocation-table th:nth-child(2) { width: 22.5%; }
+.allocation-table th:nth-child(3) { width: 22.5%; }
+
+.rebalancing-table th:nth-child(1) { width: 22%; }
+.rebalancing-table th:nth-child(2) { width: 12%; }
+.rebalancing-table th:nth-child(3) { width: 12%; }
+.rebalancing-table th:nth-child(4) { width: 13%; }
+.rebalancing-table th:nth-child(5) { width: 12%; }
+.rebalancing-table th:nth-child(6) { width: 12%; }
+.rebalancing-table th:nth-child(7) { width: 17%; }
+
+.rebalancing-table {
+  min-width: 1050px;
+}
+
+.allocazione-table th:nth-child(1) { width: 40px; }
+.allocazione-table th:nth-child(2) { width: 30%; }
+.allocazione-table th:nth-child(3) { width: 18%; }
+.allocazione-table th:nth-child(4) { width: 15%; }
+.allocazione-table th:nth-child(5) { width: 15%; }
+.allocazione-table th:nth-child(6) { width: 50px; }
+
+.pane-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pane-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.csv-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  table-layout: fixed;
+
+  thead {
+    background: var(--bg-body);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+}
+
+.csv-table th,
+.csv-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-main);
+  white-space: nowrap;
+}
+
+.csv-table th {
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--color-accent-blue);
+  text-align: left;
+}
+
+.csv-table th:nth-child(2),
+.csv-table th:nth-child(3) {
+  text-align: right;
+  padding-right: 24px;
+}
+
+.csv-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.csv-table tbody tr:hover td {
+  background-color: var(--bg-card-hover);
+}
+
+.csv-input {
+  background: var(--bg-body);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: right;
+  width: 100%;
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+
+  &:focus {
+    border-color: var(--color-accent-blue);
+    box-shadow: var(--shadow-focus);
+  }
+
+  &[readonly] {
+    color: var(--color-investimenti);
+    cursor: not-allowed;
+  }
+}
+
+.btn-upload {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  width: 36px;
+  height: 36px;
+
+  &:hover {
+    color: var(--text-main);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// Riga errore inline espandibile sotto i CSV affetti
+.csv-error-row {
+  display: table-row;
+  background: #7f1d1d;
+  color: #fff;
+
+  td {
+    padding: 0;
+    border-bottom: none;
+    background: #7f1d1d;
+    color: #fff;
+  }
+}
+
+.csv-table tbody tr.csv-error-row:hover td {
+  background: #7f1d1d;
+}
+
+.csv-error-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.csv-error-icon {
+  font-size: 1.1rem;
+}
+
+.csv-error-title {
+  flex: 1;
+}
+
+.csv-error-expand {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: background var(--transition-fast);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  &[aria-expanded="true"] {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.csv-error-copy {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all var(--transition-fast);
+
+  &:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  &.copied {
+    border-color: #4ade80;
+    background: #4ade80;
+    color: #000;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.csv-error-details {
+  padding: 12px 16px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  overflow-x: auto;
+
+  pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+    color: #fca5a5;
+  }
+}
+
+.section-row td[colspan="3"] { width: 100%; }
+.section-row td[colspan="4"] { width: 100%; }
+.section-row td[colspan="6"] { width: 100%; }
+.section-row td[colspan="7"] { width: 100%; }
+
+.allocation-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--color-accent-blue);
+  white-space: nowrap;
+}
+
+.allocation-table th:nth-child(2),
+.allocation-table th:nth-child(3) {
+  text-align: right;
+  padding-right: 24px;
+}
+
+.rebalancing-table th:nth-child(3),
+.rebalancing-table th:nth-child(4),
+.rebalancing-table th:nth-child(5),
+.rebalancing-table th:nth-child(7) {
+  text-align: right;
+  padding-right: 24px;
+}
+
+.rebalancing-table th:nth-child(6) {
+  text-align: center;
+}
+
+.allocazione-table th:nth-child(4),
+.allocazione-table th:nth-child(5) {
+  text-align: right;
+  padding-right: 24px;
+}
+
+.allocazione-table th.col-drag,
+.allocazione-table th.col-actions {
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.allocation-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-main);
+  white-space: nowrap;
+}
+
+.allocation-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.allocation-table tbody tr:hover td {
+  background-color: var(--bg-card-hover);
+}
+
+// Section rows
+.section-row {
+  background-color: var(--bg-body);
+  border-top: 1px solid var(--border-color);
+
+  &:first-child {
+    border-top: none;
+  }
+}
+
+.section-full-width {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-label {
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: 4px;
+  min-width: 90px;
+  display: inline-block;
+  text-align: right;
+}
+
+// Asset rows
+.asset-row td:nth-child(2),
+.asset-row td:nth-child(3) {
+  text-align: right;
+  padding-right: 24px;
+}
+
+.rebalancing-table .asset-row td:nth-child(3),
+.rebalancing-table .asset-row td:nth-child(4),
+.rebalancing-table .asset-row td:nth-child(5),
+.rebalancing-table .asset-row td:nth-child(7) {
+  text-align: right;
+  padding-right: 24px;
+  font-family: var(--font-mono);
+}
+
+.rebalancing-table .asset-row td:nth-child(6) {
+  text-align: center;
+}
+
+.rebalancing-table .asset-row td:nth-child(2) {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.rebalancing-table .asset-row td:first-child {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+}
+
+// Delta indicators
+.delta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-left: 6px;
+}
+
+.delta.positive {
+  color: var(--color-investimenti);
+}
+
+.delta.negative {
+  color: var(--color-emergenze);
+}
+
+// Status badges
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.status-buy {
+  background: rgba(0, 208, 156, 0.15);
+  color: var(--color-investimenti);
+  border: 1px solid rgba(0, 208, 156, 0.3);
+}
+
+.status-sell {
+  background: rgba(255, 76, 76, 0.15);
+  color: var(--color-emergenze);
+  border: 1px solid rgba(255, 76, 76, 0.3);
+}
+
+.status-hold {
+  background: rgba(139, 149, 165, 0.15);
+  color: var(--text-muted);
+  border: 1px solid rgba(139, 149, 165, 0.3);
+}
+
+// PDF list styles
+.pdf-list-container {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.pdf-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pdf-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  gap: 12px;
+}
+
+.pdf-item:last-child {
+  border-bottom: none;
+}
+
+.pdf-item:hover {
+  background-color: var(--bg-card-hover);
+}
+
+.pdf-icon {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+.pdf-name {
+  flex: 1;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.pdf-date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+// Delete button styles (reuse existing btn-delete from allocazione-table)
+.btn-delete {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  width: 36px;
+  height: 36px;
+
+  &:hover {
+    color: var(--color-emergenze);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// Open PDF button styles
+.btn-open-pdf {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  width: 36px;
+  height: 36px;
+
+  &:hover {
+    color: var(--color-accent-blue);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

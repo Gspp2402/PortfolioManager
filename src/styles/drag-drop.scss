@@ -1,0 +1,87 @@
+// =============================================================================
+// Drag & Drop
+// =============================================================================
+
+.drag-handle-cell {
+  padding: 12px 4px !important;
+  text-align: center;
+  vertical-align: middle;
+  width: 40px;
+}
+
+.drag-handle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  cursor: grab;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  line-height: 1;
+  font-weight: 700;
+  border-radius: 4px;
+  transition: all var(--transition-fast);
+  user-select: none;
+  -webkit-user-select: none;
+
+  &:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.actions-cell {
+  padding: 12px 8px !important;
+  text-align: center;
+  vertical-align: middle;
+  width: 50px;
+}
+
+.btn-delete {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  padding: 0;
+
+  &:hover {
+    color: var(--color-emergenze);
+    background: rgba(255, 76, 76, 0.1);
+    border-color: rgba(255, 76, 76, 0.3);
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+  }
+}
+
+// Drag states
+.asset-row.dragging {
+  opacity: 0.4;
+}
+
+.asset-row.dragging td {
+  background: rgba(59, 130, 246, 0.08) !important;
+}
+
+.drag-over-top > td {
+  box-shadow: inset 0 2px 0 0 var(--color-accent-blue);
+}
+
+.drag-over-bottom > td {
+  box-shadow: inset 0 -2px 0 0 var(--color-accent-blue);
+}

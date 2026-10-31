@@ -1,0 +1,24 @@
+{
+  "default_conto": "Spese",
+  "mcc_rules": {
+    "5311": "Spese",
+    "5993": "Spese",
+    "5812": "Spese",
+    "5813": "Spese",
+    "5814": "Spese",
+    "5972": "Spese",
+    "4814": "Spese",
+    "7299": "Spese",
+    "5999": "Spese",
+    "5651": "Spese",
+    "5441": "Spese",
+    "7832": "Spese",
+    "7932": "Spese",
+    "5571": "Spese",
+    "5732": "Spese",
+    "8999": "Spese",
+    "4900": "Spese",
+    "5310": "Investimenti",
+    "6211": "Investimenti"
+  }
+}

@@ -1,0 +1,67 @@
+// =============================================================================
+// Tabs Navigation
+// =============================================================================
+
+.tabs {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  background: var(--bg-card);
+  padding: 6px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 12px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  transition: all var(--transition-normal);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &:hover {
+    color: var(--text-main);
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  &.active {
+    background-color: var(--color-accent-blue);
+    color: var(--text-main);
+    box-shadow: var(--shadow-accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--text-main);
+    outline-offset: 2px;
+  }
+}
+
+.tab-panel {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+
+  &.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+  }
+}
+
+.dashboard {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,5 @@
+datetime,date,category,type,asset_class,name,symbol,shares,price,amount,fee,tax,currency,fx_rate,transaction_id,mcc_code
+2025-03-01T09:00:00Z,2025-03-01,CASH,CUSTOMER_INBOUND,,,,,,10000,,,EUR,,syn-r01,
+2025-03-02T09:00:00Z,2025-03-02,TRADING,BUY,FUND,Fondo Ribilanciamento X,SYN0REBX0001,60,100,-6000,,,EUR,,syn-r02,
+2025-03-02T10:00:00Z,2025-03-02,TRADING,BUY,FUND,Fondo Ribilanciamento Y,SYN0REBY0001,20,100,-2000,,,EUR,,syn-r03,
+2025-03-02T11:00:00Z,2025-03-02,TRADING,BUY,STOCK,Azione Ribilanciamento Z,SYN0REBZ0001,10,100,-1000,,,EUR,,syn-r04,

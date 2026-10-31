@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Republic - Portfolio Manager</title>
+</head>
+<body>
+
+    <header>
+        <div class="header-title">
+            <h1>Trade Republic</h1>
+            <p>Portfolio Manager</p>
+        </div>
+        <div class="header-actions">
+            <div class="header-user" id="header-user">
+                <button class="header-action user" id="btn-user" aria-label="Utente" title="Cambia utente">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span class="user-name" id="current-user-name">Utente</span>
+                    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="user-dropdown" id="user-dropdown" role="menu">
+                    <div class="user-dropdown-header">
+                        <span>Seleziona utente</span>
+                    </div>
+                    <div class="user-list" id="user-list" role="listbox"></div>
+                    <div class="user-dropdown-footer">
+                        <button class="btn-add-user" id="btn-add-user" aria-label="Aggiungi utente">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            Nuovo utente
+                        </button>
+                        <form class="user-create-form" id="user-create-form" hidden>
+                            <label for="new-user-name">Nome</label>
+                            <input type="text" id="new-user-name" class="user-create-input" maxlength="80" autocomplete="name" required>
+                            <p class="user-create-status" id="new-user-status" aria-live="polite"></p>
+                            <div class="user-create-actions">
+                                <button type="button" class="user-create-cancel" id="cancel-new-user">Annulla</button>
+                                <button type="submit" class="user-create-submit" id="save-new-user">Crea utente</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <button class="header-action archive" id="btn-archive" aria-label="Archivio" title="Archivio">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="21 8 21 21 3 21 3 8"></polyline>
+                    <rect x="1" y="3" width="22" height="5"></rect>
+                    <line x1="10" y1="12" x2="14" y2="12"></line>
+                </svg>
+            </button>
+            <button class="header-action settings" id="btn-settings" aria-label="Impostazioni" title="Impostazioni">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <nav class="tabs" role="tablist">
+        <button class="tab active" role="tab" id="tab-overview" aria-selected="true">Overview</button>
+        <button class="tab" role="tab" id="tab-rebalancing" aria-selected="false">Rebalancing</button>
+    </nav>
+
+    <main class="dashboard">
+
+        <!-- OVERVIEW -->
+        <section id="panel-overview" class="tab-panel active" role="tabpanel">
+            <section class="total-account">
+                <span>Totale Conto</span>
+                <span>0,00 €</span>
+            </section>
+
+            <div class="grid-3-cols">
+                <article class="card risparmi">
+                    <div class="card-header">Risparmi</div>
+                    <div class="card-value">0,00 €</div>
+                </article>
+                <article class="card emergenze">
+                    <div class="card-header">Emergenze</div>
+                    <div class="card-value">0,00 €</div>
+                </article>
+                <article class="card investimenti">
+                    <div class="card-header">
+                        <span>Investimenti</span>
+                        <span>0,00 €</span>
+                    </div>
+                    <div class="investment-list">
+                        <div class="investment-item"><span>Core</span><span>0,00 €</span></div>
+                        <div class="investment-item"><span>Satellite</span><span>0,00 €</span></div>
+                        <div class="investment-item"><span>Cash</span><span>0,00 €</span></div>
+                    </div>
+                </article>
+            </div>
+
+            <section class="allocation-table-panel">
+                <div class="table-header"><h2>Allocazione</h2></div>
+                <div class="table-container">
+                    <table class="allocation-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>(A|P) % + Δ(A|P) %</th>
+                                <th>(A) % + Δ(A) %</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+
+        <!-- REBALANCING -->
+        <section id="panel-rebalancing" class="tab-panel" role="tabpanel">
+            <section class="allocation-table-panel">
+                <div class="table-header"><h2>Rebalancing</h2></div>
+                <div class="table-container">
+                    <table class="allocation-table rebalancing-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>ISIN</th>
+                                <th>Valore €</th>
+                                <th>Δ(A|P) %</th>
+                                <th>Δ(A) %</th>
+                                <th>Stato</th>
+                                <th>Δ €</th>
+                                <th>Prezzo €</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+
+    </main>
+
+    <!-- MODAL ARCHIVIO -->
+    <div class="modal-overlay" id="archive-modal-overlay">
+        <div class="modal-window" id="archive-modal-window">
+            <div class="modal-header">
+                <h3>Archivio</h3>
+                <button class="modal-close" id="archive-modal-close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="sidebar-layout">
+                <div class="sidebar-menu">
+                    <div class="sidebar-nav-item active" data-target="archive-pane-csv">CSV</div>
+                    <div class="sidebar-nav-item" data-target="archive-pane-giacenza">Giacenza Media</div>
+                </div>
+                <div class="sidebar-content">
+                    <!-- CSV -->
+                    <div class="sidebar-pane active" id="archive-pane-csv">
+                        <div class="pane-header">
+                            <h4>CSV</h4>
+                            <button class="btn-upload" aria-label="Upload CSV" title="Upload CSV">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="csv-table-container">
+                            <table class="csv-table">
+                                <thead>
+                                    <tr>
+                                        <th class="col-drag" aria-label="Trascina"></th>
+                                        <th>CSV</th>
+                                        <th>RISPARMI</th>
+                                        <th>EMERGENZE</th>
+                                        <th class="col-actions" aria-label="Azioni"></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- GIACENZA MEDIA -->
+                    <div class="sidebar-pane" id="archive-pane-giacenza">
+                        <h4>Giacenza Media</h4>
+                        <div class="pdf-list-container">
+                            <ul class="pdf-list"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL IMPOSTAZIONI -->
+    <div class="modal-overlay" id="settings-modal-overlay">
+        <div class="modal-window" id="settings-modal-window">
+            <div class="modal-header">
+                <h3>Impostazioni</h3>
+                <button class="modal-close" id="settings-modal-close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="sidebar-layout">
+                <div class="sidebar-menu">
+                    <div class="sidebar-nav-item active" data-target="pane-utente">Utente</div>
+                    <div class="sidebar-nav-item" data-target="pane-soglia">Soglia</div>
+                    <div class="sidebar-nav-item" data-target="pane-allocazione">Allocazione</div>
+                </div>
+                <div class="sidebar-content">
+                    <!-- UTENTE -->
+                    <div class="sidebar-pane active" id="pane-utente">
+                        <h4>Utente</h4>
+                        <form class="user-settings-form" id="user-settings-form">
+                            <div class="form-group">
+                                <label for="user-name-input">Nome</label>
+                                <div class="form-control">
+                                    <input type="text" id="user-name-input" class="form-input" maxlength="80" autocomplete="name" required>
+                                </div>
+                            </div>
+                            <div class="user-settings-actions">
+                                <p class="user-settings-status" id="user-name-status" aria-live="polite"></p>
+                                <button type="submit" class="user-save-button" id="user-name-save">Salva nome</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- SOGLIE -->
+                    <div class="sidebar-pane" id="pane-soglia">
+                        <h4>Soglia</h4>
+                        <div class="liquidita-form">
+                            <div class="form-group">
+                                <label for="soglia-a">Soglia (A) %</label>
+                                <div class="form-control">
+                                    <input type="text" id="soglia-a" class="form-input" value="5,0" placeholder="0,0">
+                                    <span class="currency-symbol">%</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="soglia-ap">Soglia (A|P) %</label>
+                                <div class="form-control">
+                                    <input type="text" id="soglia-ap" class="form-input" value="3,0" placeholder="0,0">
+                                    <span class="currency-symbol">%</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="soglia-rel">Soglia relativa al target %</label>
+                                <div class="form-control">
+                                    <input type="text" id="soglia-rel" class="form-input" value="0,0" placeholder="0,0">
+                                    <span class="currency-symbol">%</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="soglia-min">Importo minimo €</label>
+                                <div class="form-control">
+                                    <input type="text" id="soglia-min" class="form-input" value="0" placeholder="0">
+                                    <span class="currency-symbol">€</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ALLOCAZIONE -->
+                    <div class="sidebar-pane" id="pane-allocazione">
+                        <h4>Allocazione</h4>
+                        <div class="table-container" style="border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden;">
+                            <table class="allocation-table allocazione-table" id="allocazione-table">
+                                <thead>
+                                    <tr>
+                                        <th class="col-drag" aria-label="Trascina"></th>
+                                        <th>Nome</th>
+                                        <th>ISIN</th>
+                                        <th>(A|P) %</th>
+                                        <th>(A) %</th>
+                                        <th class="col-actions" aria-label="Azioni"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="allocazione-tbody">
+                                    <tr class="section-row core-section">
+                                        <td colspan="6"><div class="section-full-width"><span class="section-label">CORE</span><input type="text" class="section-weight-input" value="0,0"><span class="section-percent">%</span></div></td>
+                                    </tr>
+                                    <tr class="empty-asset-row">
+                                        <td class="drag-handle-cell"></td>
+                                        <td><input type="text" class="empty-input text-left" placeholder="Nome asset..."></td>
+                                        <td><input type="text" class="empty-input" placeholder="ISIN..."></td>
+                                        <td><div class="cell-disabled"><div class="disabled-box"></div><span class="symbol">%</span></div></td>
+                                        <td><div class="cell-percent"><input type="text" class="empty-input" placeholder="0,0"><span class="symbol">%</span></div></td>
+                                        <td class="actions-cell"></td>
+                                    </tr>
+                                    <tr class="section-row satellite-section">
+                                        <td colspan="6"><div class="section-full-width"><span class="section-label">SATELLITE</span><input type="text" class="section-weight-input" value="0,0"><span class="section-percent">%</span></div></td>
+                                    </tr>
+                                    <tr class="empty-asset-row">
+                                        <td class="drag-handle-cell"></td>
+                                        <td><input type="text" class="empty-input text-left" placeholder="Nome asset..."></td>
+                                        <td><input type="text" class="empty-input" placeholder="ISIN..."></td>
+                                        <td><div class="cell-disabled"><div class="disabled-box"></div><span class="symbol">%</span></div></td>
+                                        <td><div class="cell-percent"><input type="text" class="empty-input" placeholder="0,0"><span class="symbol">%</span></div></td>
+                                        <td class="actions-cell"></td>
+                                    </tr>
+                                    <tr class="section-row cash-section">
+                                        <td colspan="6"><div class="section-full-width"><span class="section-label">CASH</span><input type="text" class="section-weight-input" value="0,0"><span class="section-percent">%</span></div></td>
+                                    </tr></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/js/main.js"></script>
+</body>
+</html>

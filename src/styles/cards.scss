@@ -1,0 +1,142 @@
+// =============================================================================
+// Cards & Overview
+// =============================================================================
+
+.total-account {
+  background: var(--bg-gradient-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-card);
+
+  span:first-child {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  span:last-child {
+    font-family: var(--font-mono);
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+
+    span:last-child {
+      font-size: 2rem;
+    }
+  }
+}
+
+.grid-3-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  box-shadow: var(--shadow-card);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--border-color-hover);
+  }
+
+  &.risparmi .card-header {
+    color: var(--color-spese);
+  }
+
+  &.emergenze .card-header {
+    color: var(--color-emergenze);
+  }
+
+  &.investimenti .card-header {
+    color: var(--color-investimenti);
+  }
+
+  &.risparmi .card-value {
+    color: var(--color-spese);
+  }
+
+  &.emergenze .card-value {
+    color: var(--color-emergenze);
+  }
+}
+
+.card-header {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 360px) {
+  .card.investimenti .card-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.card-value {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  margin: auto 0;
+}
+
+.investment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.investment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--border-color);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  span:first-child {
+    color: var(--text-muted);
+  }
+
+  span:last-child {
+    font-family: var(--font-mono);
+  }
+}

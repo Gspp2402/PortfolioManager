@@ -1,0 +1,5 @@
+datetime,date,category,type,asset_class,name,symbol,shares,price,amount,fee,tax,currency,fx_rate,transaction_id,mcc_code
+2025-04-01T09:00:00Z,2025-04-01,CASH,CUSTOMER_INBOUND,,,,,,100,,,EUR,,syn-ok-1,
+2025-04-02T09:00:00Z,2025-04-02,CASH,SYNTHETIC_UNKNOWN,,,,,,-100,,,EUR,,syn-bad-9,
+2025-04-03T09:00:00Z,2025-04-03,CASH,SYNTHETIC_UNKNOWN,,,,,,-5,,,EUR,,syn-bad-10,
+2025-04-04T09:00:00Z,2025-04-04,CASH,,,,,,,-1,,,EUR,,syn-bad-11,

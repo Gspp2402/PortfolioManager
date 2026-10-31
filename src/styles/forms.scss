@@ -1,0 +1,202 @@
+// =============================================================================
+// Form Inputs & Editable Cells
+// =============================================================================
+
+.table-input {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  width: 100%;
+  text-align: right;
+  outline: none;
+  transition: all var(--transition-fast);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--border-color);
+  }
+
+  &:focus {
+    background: var(--bg-body);
+    border-color: var(--color-accent-blue);
+    box-shadow: var(--shadow-focus);
+  }
+
+  &.text-left {
+    text-align: left;
+    font-family: var(--font-main);
+    font-weight: 500;
+  }
+
+  &.readonly {
+    color: var(--text-muted);
+    cursor: not-allowed;
+    background: transparent !important;
+    border-color: transparent !important;
+
+    &:hover {
+      background: transparent;
+      border-color: transparent;
+    }
+  }
+}
+
+.section-weight-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 3px 8px;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  width: 70px;
+  text-align: right;
+  outline: none;
+  text-transform: none;
+  letter-spacing: normal;
+  transition: all var(--transition-fast);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--border-color);
+  }
+
+  &:focus {
+    background: var(--bg-body);
+    border-color: var(--color-accent-blue);
+    box-shadow: var(--shadow-focus);
+  }
+}
+
+.section-weight-input.weight-valid {
+  background: rgba(34, 197, 94, 0.16);
+  border-color: rgba(34, 197, 94, 0.7);
+}
+
+.section-weight-input.weight-invalid {
+  background: rgba(239, 68, 68, 0.16);
+  border-color: rgba(239, 68, 68, 0.8);
+}
+
+.table-input.distribution-valid {
+  background: rgba(34, 197, 94, 0.16);
+  border-color: rgba(34, 197, 94, 0.7);
+}
+
+.table-input.distribution-invalid {
+  background: rgba(239, 68, 68, 0.16);
+  border-color: rgba(239, 68, 68, 0.8);
+}
+
+.section-percent {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.cell-percent {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.cell-percent .table-input {
+  width: 70px;
+  flex: 0 0 auto;
+}
+
+.cell-percent .symbol {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+// Disabled cell
+.cell-disabled {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.disabled-box {
+  background: rgba(139, 149, 165, 0.15);
+  border: 1px solid rgba(139, 149, 165, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  width: 70px;
+  height: 34px;
+  cursor: not-allowed;
+  flex: 0 0 auto;
+}
+
+.cell-disabled .symbol {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+// Empty asset row
+.empty-asset-row {
+  background-color: transparent;
+  transition: background-color var(--transition-fast);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+}
+
+.empty-asset-row td {
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.empty-asset-row .drag-handle-cell,
+.empty-asset-row .actions-cell {
+  padding: 8px 4px !important;
+}
+
+.empty-input {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  width: 100%;
+  text-align: right;
+  outline: none;
+  transition: all var(--transition-fast);
+
+  &::placeholder {
+    color: var(--text-muted);
+    opacity: 0.5;
+    font-weight: 400;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--border-color);
+  }
+
+  &:focus {
+    background: var(--bg-body);
+    border-color: var(--color-accent-blue);
+    box-shadow: var(--shadow-focus);
+  }
+}
