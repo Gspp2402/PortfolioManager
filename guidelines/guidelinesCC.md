@@ -54,7 +54,7 @@ Un Cash Investimenti negativo indica che i flussi importati non bastano a coprir
 
 ## Valori e limiti
 
-Le posizioni sono la somma cronologica delle quote BUY/SELL. Il valore di mercato di ciascun asset usa il prezzo osservato al caricamento del CSV più recente che lo quota (vedi guidelinesCSV.md); in mancanza, l'ultimo prezzo di una transazione CSV. Un prezzo digitato a mano nella colonna Prezzo € di Rebalancing ha la precedenza. Il ribilanciamento confronta questi valori con i target delle sezioni.
+Le posizioni sono la somma cronologica delle quote BUY/SELL. Il valore di mercato di ciascun asset usa il prezzo osservato al caricamento del CSV più recente che lo quota (vedi guidelinesCSV.md); in mancanza, l'ultimo prezzo di una transazione CSV. Il ribilanciamento confronta questi valori con i target delle sezioni.
 
 Stato di ogni riga del ribilanciamento: `HOLD` se lo scostamento `Δ(A|P)` è entro la banda (A|P) **e** `Δ(A)` è entro la banda (A), oppure se l'importo da movimentare `Δ €` è inferiore a un centesimo o all'Importo minimo; altrimenti `BUY` se `Δ € > 0` e `SELL` se `Δ € < 0`. Ogni banda è il massimo tra la soglia assoluta in punti percentuali (Soglia (A|P), Soglia (A)) e la Soglia relativa al target, cioè la percentuale del target dell'asset (`% (A|P)` o `% (A)`): serve a evitare ordini inutili sugli asset con target piccolo. Con Soglia relativa e Importo minimo a zero (default) vale solo la soglia assoluta. `Δ €` è sempre calcolato sul Conto Investimenti (`% (A)`), quindi la direzione può differire dal segno di `Δ(A|P)` quando l'intera sezione è fuori target. Le soglie negative sono trattate come zero. Le soglie sono salvate per profilo.
 

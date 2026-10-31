@@ -628,24 +628,10 @@ if (isDev) {
   });
   app.use(viteServer.middlewares);
 } else {
-  const distIndex = join(PROJECT_ROOT, 'dist', 'index.html');
-  let distReady = false;
-  try {
-    await stat(distIndex);
-    distReady = true;
-  } catch {
-    // Build assente: l'interfaccia non è compilata.
-  }
-  if (distReady) {
-    app.use(express.static(join(PROJECT_ROOT, 'dist')));
-    app.get('*', (_req, res) => {
-      res.sendFile(distIndex);
-    });
-  } else {
-    app.get('*', (_req, res) => {
-      res.status(200).send('<html><body><h1>Portfolio Manager</h1><p>Interfaccia non compilata: esegui "npm run build".</p></body></html>');
-    });
-  }
+  app.use(express.static(join(PROJECT_ROOT, 'dist')));
+  app.get('*', (_req, res) => {
+    res.sendFile(join(PROJECT_ROOT, 'dist', 'index.html'));
+  });
 }
 
 // =============================================================================

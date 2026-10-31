@@ -824,17 +824,7 @@ function rebalancingAssetRow(asset, portfolioValue, investmentValue, sectionTarg
   delta.className = `delta ${deltaEuro < 0 ? 'negative' : 'positive'}`;
   delta.textContent = `${deltaEuro < 0 ? '- ' : '+ '}${formatCurrency(Math.abs(deltaEuro))}`;
   deltaCell.append(delta);
-  const priceCell = document.createElement('td');
-  if (asset.identifier !== '—') {
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.className = 'csv-input price-input';
-    input.dataset.isin = asset.identifier;
-    input.setAttribute('aria-label', `Prezzo ${asset.name}`);
-    input.value = asset.price > 0 ? formatNumber(asset.price, 2) : '';
-    priceCell.append(input);
-  }
-  row.append(statusCell, deltaCell, priceCell);
+  row.append(statusCell, deltaCell);
   return row;
 }
 
@@ -1295,17 +1285,6 @@ function bindImportTable() {
     }
     persistImportMeta();
     updateComputedValues();
-  });
-  // Il prezzo digitato viene salvato nel CSV più recente.
-  rebalanceBody.addEventListener('change', (event) => {
-    if (!event.target.matches('.price-input') || !state.imports.length) return;
-    const price = parseLocaleNumber(event.target.value.replace(/[^\d,.-]/g, ''));
-    const latest = state.imports.at(-1);
-    latest.manualPrices ??= {};
-    if (price > 0) latest.manualPrices[event.target.dataset.isin] = price;
-    else delete latest.manualPrices[event.target.dataset.isin];
-    persistImportMeta();
-    calculate();
   });
   csvBody.addEventListener('portfolio:reorder', () => {
     const ids = [...csvBody.querySelectorAll('[data-import-id]')].map((row) => row.dataset.importId);
